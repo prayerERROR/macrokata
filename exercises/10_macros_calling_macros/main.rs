@@ -34,7 +34,11 @@ macro_rules! digit {
 ////////// DO NOT CHANGE ABOVE HERE /////////
 
 // TODO: create `number!()` macro.
-
+macro_rules! number {
+    ($($item:ident)+) => {
+        concat!($(digit!($item)),+)
+    };
+}
 ////////// DO NOT CHANGE BELOW HERE /////////
 
 fn main() {

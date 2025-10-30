@@ -1,5 +1,21 @@
 // TODO: Create the `curry!()` macro.
+macro_rules! curry {
+    // Base case: single parameter with body
+    (($var:ident: $var_ty:ty) => _, $func:block) => {
+        move |$var: $var_ty| {
+            print_curried_argument($var);
+            $func
+        }
+    };
 
+    // Recursive case: multiple parameters
+    (($var:ident: $var_ty:ty) => $($rest:tt)+) => {
+        move |$var: $var_ty| {
+            print_curried_argument($var);
+            curry!($($rest)+)
+        }
+    };
+}
 ////////// DO NOT CHANGE BELOW HERE /////////
 
 fn print_numbers(nums: &Vec<i32>) {

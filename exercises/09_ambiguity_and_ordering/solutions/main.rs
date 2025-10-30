@@ -4,6 +4,7 @@
 /// Even though to a compiled program there's no difference,
 /// this will let the program tell what sort of code the user wrote.
 #[derive(Debug)]
+#[allow(dead_code)]
 enum NumberType {
     /// The user wrote a literal, positive number.
     PositiveNumber(u32),
